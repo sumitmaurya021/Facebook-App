@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Log In or Sign Up</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0 20px;
+        }
+
+        .logo {
+            flex-basis: 60%;
+            text-align: start; /* Align content to start */
+        }
+
+        .logo h1 {
+            color: #1877f2;
+            font-size: 52px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: -1.5px;
+        }
+
+        .logo p {
+            font-size: 28px;
+            color: #1c1e21;
+            margin-top: -10px;
+            line-height: 34px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px 25px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            width: 360px;
+        }
+
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="email"]:focus,
+        .form-container input[type="password"]:focus {
+            border-color: #1877f2;
+            outline: none;
+            box-shadow: 0 0 4px rgba(24, 119, 242, 0.4);
+        }
+
+        .form-container button {
+            width: 100%; 
+            background-color: #1877f2; 
+            color: #fff; 
+            padding: 12px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            margin-top: 10px; 
+            transition: background-color 0.3s ease; 
+        }
+
+        .btn{
+            width: 100%; 
+            background-color: #1877f2; 
+            color: #fff; 
+            padding: 12px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            margin-top: 10px; 
+            transition: background-color 0.3s ease; 
+        }
+
+        .btn:hover {
+            background-color: #165eab; 
+        }
+
+        .form-container button:hover {
+            background-color: #165eab; 
+        }
+
+        .form-container .forgot-password {
+            display: block;
+            text-align: center;
+            margin: 15px 0;
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative; 
+        }
+
+        .form-container .forgot-password:after {
+            content: "";
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid #dadde1;
+            height: 2px; 
+            margin: 20px 0px; 
+        }
+
+        .form-container .create-account {
+            background-color: #42b72a;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px 0;
+            color: white;
+            width: 60%;
+            border-radius: 6px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .form-container .create-account:hover {
+            background-color: #36a420;
+        }
+
+        .footer {
+            background-color: white;
+            text-align: start; /* Aligning text to start */
+            padding: 20px;
+            color: #8a8d91;
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: #8a8d91;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .languages {
+            margin-top: 20px;
+            font-size: 13px;
+            text-align: start;
+        }
+
+        .languages a {
+            color: #1c1e21;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+
+        .languages a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .logo {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .logo h1 {
+                font-size: 42px;
+            }
+
+            .form-container {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <h1>facebook</h1>
+            <p>Facebook helps you connect and share </br> with the people in your life.</p>
+        </div>
+        <div class="form-container">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <%= f.email_field :email, placeholder: "Email address or phone number", required: true %>
+                <%= f.password_field :password, placeholder: "Password", required: true %>
+
+                <%= f.submit "Log In", class: "btn" %>
+
+                <a href="<%= new_password_path(resource_name) %>" class="forgot-password">Forgotten password?</a>
+                <%= link_to "Create New Account", new_registration_path(resource_name), class: "btn create-account" %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="languages">
+            <a href="#">English (UK)</a>
+            <a href="#">ગુજરાતી</a>
+            <a href="#">हिन्दी</a>
+            <a href="#">मराठी</a>
+            <a href="#">اردو</a>
+            <a href="#">ਪੰਜਾਬੀ</a>
+            <a href="#">தமிழ்</a>
+            <a href="#">తెలుగు</a>
+            <a href="#">বাংলা</a>
+            <a href="#">മലയാളം</a>
+            <a href="#">Español</a>
+            <a href="#">+</a>
+        </div>
+        <a href="#">Sign Up</a>
+        <a href="#">Log In</a>
+        <a href="#">Messenger</a>
+        <a href="#">Facebook Lite</a>
+        <a href="#">Video</a>
+        <a href="#">Marketplace</a>
+        <a href="#">Games</a>
+        <a href="#">Meta Pay</a>
+        <a href="#">Meta Store</a>
+        <a href="#">Meta Quest</a>
+        <a href="#">Ray-Ban</a>
+        <a href="#">About</a>
+        <a href="#">Create ad</a>
+        <a href="#">Create Page</a>
+        <a href="#">Careers</a>
+        <a href="#">Terms</a>
+        <a href="#">Help</a>
+        <a href="#">Privacy Policy</a>
+    </div>
+
+</body>
+</html>
