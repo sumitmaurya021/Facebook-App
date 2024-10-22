@@ -145,7 +145,7 @@
         .footer {
             background-color: white;
             text-align: start; /* Aligning text to start */
-            padding: 20px;
+            padding: 20px 200px;
             color: #8a8d91;
             font-size: 12px;
         }
@@ -154,6 +154,7 @@
             color: #8a8d91;
             margin-right: 10px;
             text-decoration: none;
+            line-height: 20px;
         }
 
         .footer a:hover {
@@ -164,12 +165,30 @@
             margin-top: 20px;
             font-size: 13px;
             text-align: start;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .languages::before{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            border-bottom: 1px solid #dadde1;
+            margin: 35px 0px;
         }
 
         .languages a {
-            color: #1c1e21;
+            color: #737373;
             margin-right: 5px;
             text-decoration: none;
+        }
+
+        .languages a:last-child {
+            padding: 2px 8px;
+            background: #f5f6f7;
+            color: #8a8d91;
+            border: 1px solid;
         }
 
         .languages a:hover {
