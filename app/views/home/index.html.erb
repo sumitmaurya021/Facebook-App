@@ -1,2 +1,59 @@
-<h1>Hello world</h1>
-<%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <% content_for :title, "Hello World with Sign Out Button" %>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f6f9;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .custom-heading {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      color: #2c3e50;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+
+    .signout-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .signout-button:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="custom-heading">Hello World</h1>
+  <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "signout-button" %>
+</body>
+</html>
